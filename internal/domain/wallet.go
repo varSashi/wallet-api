@@ -17,8 +17,6 @@ type Wallet struct {
 }
 
 // WalletRepository dictates how we access the wallets table.
-// Notice the GetForUpdate method: it will be the one using 'SELECT ... FOR UPDATE'
-// in Postgres to lock the row during a transfer.
 type WalletRepository interface {
 	Create(ctx context.Context, wallet *Wallet) error
 	GetByID(ctx context.Context, id uuid.UUID) (*Wallet, error)
