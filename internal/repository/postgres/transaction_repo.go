@@ -2,7 +2,6 @@ package postgres
 
 import (
 	"context"
-	"database/sql"
 
 	"github.com/google/uuid"
 	"wallet-api/internal/domain"

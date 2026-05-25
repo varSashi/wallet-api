@@ -44,7 +44,7 @@ func (r *walletRepo) GetByUserID(ctx context.Context, userID uuid.UUID) (*domain
 	return r.scanWallet(r.db.QueryRowContext(ctx, query, userID))
 }
 
-// GetForUpdate is the star of the show. The "FOR UPDATE" locks the row in PostgreSQL.
+// The "FOR UPDATE" locks the row in PostgreSQL
 func (r *walletRepo) GetForUpdate(ctx context.Context, id uuid.UUID) (*domain.Wallet, error) {
 	query := `SELECT id, user_id, balance, created_at, updated_at FROM wallets WHERE id = $1 FOR UPDATE`
 	return r.scanWallet(r.db.QueryRowContext(ctx, query, id))

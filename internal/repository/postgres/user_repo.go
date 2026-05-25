@@ -26,7 +26,6 @@ func (r *userRepo) Create(ctx context.Context, user *domain.User) error {
 	`
 	_, err := r.db.ExecContext(ctx, query, user.ID, user.Name, user.Email, user.CreatedAt)
 	if err != nil {
-		// In a real application, you would check for unique constraint violations here (e.g. duplicate email)
 		return err
 	}
 	return nil
